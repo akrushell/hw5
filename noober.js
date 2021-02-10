@@ -90,9 +90,36 @@ async function (event){
 }
 )
 
+let poolbutton = document.querySelector('#noober-pool-filter')
+poolbutton.addEventListener('click', async function(event){
+  event.preventDefault()
+  
+ 
+// need to clear previous log
+
+  console.log("Pool button is clicked")
+  let url = 'https://kiei451.com/api/rides.json'
+  let response = await fetch(url)
+  let json = await response.json()
+  let newArray = []
+  for (let i = 0; i<json.length; i++){
+    if(json[i].length > 1){
+      newArray.push(json[i])
+    }
+  }
+renderRides(newArray)
+})
+
 let purplebutton = document.querySelector('#noober-purple-filter')
 purplebutton.addEventListener('click', async function(event){
   event.preventDefault()
+  
+ 
+// let ridesReset = document.querySelector('.rides container text-center mx-auto')
+// ridesReset.innerHTML = ''
+// to clear previously rendered rides 
+//element.innerHTML = '' after default? 
+
   console.log("Purple button is clicked")
   let url = 'https://kiei451.com/api/rides.json'
   let response = await fetch(url)
@@ -107,8 +134,49 @@ purplebutton.addEventListener('click', async function(event){
 renderRides(newArray)
 })
 
+let XLbutton = document.querySelector('#noober-xl-filter')
+XLbutton.addEventListener('click', async function(event){
+  event.preventDefault()
+  
+ 
+// need to clear previous log
+//this one isnt working 
 
-// to clear previously rendered rides 
-//element.innerHTML = '' after default? 
+  console.log("XL button is clicked")
+  let url = 'https://kiei451.com/api/rides.json'
+  let response = await fetch(url)
+  let json = await response.json()
+  let newArray = []
+  for (let i = 0; i<json.length; i++){
+    //help here 
+    let p = numberOfPassengers(json[i])
+    if(p > 3){
+      newArray.push(json[i])
+    }
+  }
+renderRides(newArray)
+})
+
+
+let Xbutton = document.querySelector('#noober-x-filter')
+Xbutton.addEventListener('click', async function(event){
+  event.preventDefault()
+  
+// need to clear previous log
+//this one isnt working 
+
+  console.log("X button is clicked")
+  let url = 'https://kiei451.com/api/rides.json'
+  let response = await fetch(url)
+  let json = await response.json()
+  let newArray = []
+  for (let i = 0; i<json.length; i++){
+    if(json[i].numberOfPassengers == 3){
+      newArray.push(json[i])
+    }
+  }
+renderRides(newArray)
+})
+
 })
 
