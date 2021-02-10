@@ -69,5 +69,46 @@ function renderRides(ridesArray) {
 
 window.addEventListener('DOMContentLoaded', function() {
   // YOUR CODE
+
+let allButton = document.querySelector('#all-filter')
+allButton.addEventListener('click', 
+async function (event){
+  event.preventDefault()
+  console.log("All Rides button is clicked")
+  let url = 'https://kiei451.com/api/rides.json'
+  let response = await fetch(url)
+  let json = await response.json()
+  let newArray=[]
+
+  for(let i = 0; i<json.length; i++){
+    newArray.push(json[i])
+    
+  }
+
+
+  renderRides(newArray)
+}
+)
+
+let purplebutton = document.querySelector('#noober-purple-filter')
+purplebutton.addEventListener('click', async function(event){
+  event.preventDefault()
+  console.log("Purple button is clicked")
+  let url = 'https://kiei451.com/api/rides.json'
+  let response = await fetch(url)
+  let json = await response.json()
+  let newArray = []
+  for (let i = 0; i<json.length; i++){
+    let s = levelOfService(json[i])
+    if(s=="Noober Purple"){
+      newArray.push(json[i])
+    }
+  }
+renderRides(newArray)
+})
+
+
+// to clear previously rendered rides 
+//element.innerHTML = '' after default? 
 })
 
