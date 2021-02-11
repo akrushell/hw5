@@ -142,7 +142,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
     let rideContainer = document.querySelector(".rides");
     rideContainer.innerHTML = ""
-    //this one isnt working 
 
     console.log("XL button is clicked")
     let url = 'https://kiei451.com/api/rides.json'
@@ -167,7 +166,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
     let rideContainer = document.querySelector(".rides");
     rideContainer.innerHTML = ""
-    //this one isnt working 
 
     console.log("X button is clicked")
     let url = 'https://kiei451.com/api/rides.json'
@@ -175,7 +173,7 @@ window.addEventListener('DOMContentLoaded', function () {
     let json = await response.json()
     let newArray = []
     for (let i = 0; i < json.length; i++) {
-      //help here 
+
       console.log(json[i])
       let s = levelOfService(json[i])
       if (s == 'Noober X') {
@@ -186,4 +184,3 @@ window.addEventListener('DOMContentLoaded', function () {
   })
 
 })
-
